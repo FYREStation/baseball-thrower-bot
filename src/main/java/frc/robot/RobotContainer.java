@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Driving;
+import frc.robot.commands.Shooting;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Shooter;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,15 +27,19 @@ public class RobotContainer {
   private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
   private final DriveTrain driveTrain = new DriveTrain();
   private final Driving driving = new Driving(driveTrain);
+  private final Shooter shooter = new Shooter();
+  private final Shooting shooting = new Shooting(shooter);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  public final static CommandXboxController driverController =
-      new CommandXboxController(OperatorConstants.driverControllerPort);
+  public final static CommandXboxController controller =
+      new CommandXboxController(OperatorConstants.controllerPort);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     driveTrain.setDefaultCommand(driving);
+    shooter.setDefaultCommand(shooting);
     configureBindings();
   }
 
@@ -48,10 +54,18 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Configure your button bindings here
-    driverController.a()
+    controller.a()
       .onTrue(driving.toggleDriveMode);
 
-    //driverController.zr()
+      controller.y()
+      .onTrue(shooting.toggleShootingMode);
+
+      controller.rightBumper()
+        .onTrue(shooting.toggleRbButton)
+        .onFalse(shooting.toggleRbButton);
+
+
+    //controller.zr()
     //  .onTrue(driving.hitTheNos);
 
     }

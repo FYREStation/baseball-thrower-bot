@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
  */
 public final class Constants {
   public static class OperatorConstants {
-    public static final int driverControllerPort = 0;
+    public static final int controllerPort = 0;
   }
   public static class DriveConstants {
     public static final int leftMotorPort1 = 1;
@@ -26,8 +26,16 @@ public final class Constants {
     public static final int rightMotorPort2 = 4;
     public static final int leftMotorPort3 = 5;
     public static final int rightMotorPort3 = 6;
+    public static final boolean isTankDefault = true;
 
     public static final double deadband = 0.25;
 
+  }
+
+  public static class ShooterConstants {
+    public static final int shooterMotorPort1 = 7;
+    public static final int shooterMotorPort2 = 8;
+    public static final boolean isToggleDefault = false;
+    public static final int speed = 1;
   }
 }
