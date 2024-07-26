@@ -28,13 +28,9 @@ public class Driving extends Command {
     leftStick = controller.getLeftY();
     rightStick = isTank ? controller.getRightY() : controller.getRightX();
 
-    if (isTank) 
-    {
+    if (isTank) {
       driveTrain.tankDrive(rightStick, leftStick);
-    } 
-    
-    else 
-    {
+    } else {
       driveTrain.arcadeDrive(rightStick, leftStick);
     }
   }
@@ -45,6 +41,4 @@ public class Driving extends Command {
 
   public Command toggleDriveMode = Commands.runOnce (() -> toggleDriveMode());
 
-
-    
 }

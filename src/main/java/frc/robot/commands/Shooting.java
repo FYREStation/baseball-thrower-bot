@@ -33,12 +33,13 @@ public class Shooting extends Command {
             if (isToggle) {
                 if (isToggleShouldBeRunning) {
                     shooter.shoot(speed);
-                } else {
-                    shooter.stop();
-                }
+                } 
             } else {
                 shooter.shoot(speed);
             }
+        
+        } else if (!isToggle) {
+            shooter.stop();
         }
 
     }
@@ -46,7 +47,6 @@ public class Shooting extends Command {
     public void toggleShootingMode() {
         isToggle = !isToggle;
         isToggleShouldBeRunning = false;
-
     }
     
 
@@ -54,7 +54,19 @@ public class Shooting extends Command {
         isRbPressed = !isRbPressed;
     }
 
+    private void pushBall() {
+        shooter.pushBall();
+    }
+
+    private void retractPusher() {
+        shooter.returnPusher();
+    }
+
     public Command toggleShootingMode = Commands.runOnce(() -> toggleShootingMode());
 
     public Command toggleRbButton = Commands.runOnce(() -> toggleRbButton());
+
+    public Command pushBall = Commands.runOnce(() -> pushBall());
+
+    public Command retractPusher = Commands.runOnce(() -> retractPusher());
 }

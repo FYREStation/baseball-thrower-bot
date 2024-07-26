@@ -35,7 +35,10 @@ public final class Constants {
   public static class ShooterConstants {
     public static final int shooterMotorPort1 = 7;
     public static final int shooterMotorPort2 = 8;
+
+    public static final int servoMotorPort = 0;
+
     public static final boolean isToggleDefault = false;
-    public static final int speed = 1;
+    public static final double speed = 1;
   }
 }

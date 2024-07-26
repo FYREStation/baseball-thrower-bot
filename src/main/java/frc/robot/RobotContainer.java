@@ -25,8 +25,10 @@ import frc.robot.subsystems.Shooter;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+  
   private final DriveTrain driveTrain = new DriveTrain();
   private final Driving driving = new Driving(driveTrain);
+
   private final Shooter shooter = new Shooter();
   private final Shooting shooting = new Shooting(shooter);
 
@@ -57,12 +59,16 @@ public class RobotContainer {
     controller.a()
       .onTrue(driving.toggleDriveMode);
 
-      controller.y()
+    controller.y()
       .onTrue(shooting.toggleShootingMode);
 
-      controller.rightBumper()
-        .onTrue(shooting.toggleRbButton)
-        .onFalse(shooting.toggleRbButton);
+    controller.rightBumper()
+      .onTrue(shooting.toggleRbButton)
+      .onFalse(shooting.toggleRbButton);
+
+    controller.x()
+      .onTrue(shooting.pushBall)
+      .onFalse(shooting.retractPusher);
 
 
     //controller.zr()
