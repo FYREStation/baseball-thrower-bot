@@ -17,12 +17,12 @@ public class Shooter extends SubsystemBase {
     public Shooter() {
         shooterMotor1 = new CANSparkMax(
             ShooterConstants.shooterMotorPort1,
-            CANSparkLowLevel.MotorType.kBrushed
+            CANSparkLowLevel.MotorType.kBrushless
         );
 
         shooterMotor2 = new CANSparkMax(
             ShooterConstants.shooterMotorPort2,
-            CANSparkLowLevel.MotorType.kBrushed
+            CANSparkLowLevel.MotorType.kBrushless
         );
 
         shooterServo = new Servo(ShooterConstants.servoMotorPort);
@@ -32,6 +32,7 @@ public class Shooter extends SubsystemBase {
 
     private void setupMotors() {
         shooterMotor2.follow(shooterMotor1, true);
+        shooterMotor1.setInverted(true);
     }
 
     public void shoot(double speed) {
@@ -43,7 +44,7 @@ public class Shooter extends SubsystemBase {
     }
 
     public void pushBall() {
-        shooterServo.set(0.5);
+        shooterServo.set(0.15);
     }
 
     public void returnPusher() {
