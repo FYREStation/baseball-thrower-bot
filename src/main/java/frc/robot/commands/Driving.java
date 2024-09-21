@@ -4,12 +4,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.DriveConstants;
 
 public class Driving extends Command {
   private final DriveTrain driveTrain;
-  private final CommandXboxController controller;
+  private final CommandJoystick controller;
   private boolean isTank;
   private double leftStick;
   private double rightStick;
@@ -25,14 +26,14 @@ public class Driving extends Command {
   @Override
   public void execute() {
 
-    leftStick = controller.getLeftY();
-    rightStick = isTank ? controller.getRightY() : controller.getRightX();
+    // leftStick = controller.getLeftY();
+    // rightStick = isTank ? controller.getRightY() : controller.getRightX();
 
-    if (isTank) {
-      driveTrain.tankDrive(rightStick, leftStick);
-    } else {
-      driveTrain.arcadeDrive(rightStick, leftStick);
-    }
+    // if (isTank) {
+    //   driveTrain.tankDrive(rightStick, leftStick);
+    // } else {
+    //   driveTrain.arcadeDrive(rightStick, leftStick);
+    // }
   }
 
   public void toggleDriveMode() {

@@ -9,6 +9,7 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.Driving;
@@ -33,8 +34,8 @@ public class RobotContainer {
   private final Shooting shooting = new Shooting(shooter);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  public final static CommandXboxController controller =
-      new CommandXboxController(OperatorConstants.controllerPort);
+  public final static CommandJoystick controller =
+      new CommandJoystick(OperatorConstants.controllerPort);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -56,17 +57,17 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Configure your button bindings here
-    controller.a()
-      .onTrue(driving.toggleDriveMode);
+    //controller.a()
+      //.onTrue(driving.toggleDriveMode);
 
-    controller.y()
-      .onTrue(shooting.toggleShootingMode);
+    //controller.y()
+      //.onTrue(shooting.toggleShootingMode);
 
-    controller.rightBumper()
+    controller.button(2)
       .onTrue(shooting.toggleRbButton)
       .onFalse(shooting.toggleRbButton);
 
-    controller.x()
+    controller.button(1)
       .onTrue(shooting.pushBall)
       .onFalse(shooting.retractPusher);
 
